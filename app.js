@@ -7,6 +7,7 @@ const placeRoutes = require("./src/Routes/places.route");
 const userRoutes = require("./src/Routes/user.route");
 const def = require("./src/InMemoryDB/exp");
 const dbHandle = require("./config/DB.js");
+const PORT = process.env.PORT || 5001;
 const app = express();
 dbHandle();
 // app.use(bodyParser());
@@ -32,7 +33,9 @@ app.use((error, req, res, next) => {
   res.json({ msg: error.message || "An unknown error occured!" });
 });
 
-app.listen(5000);
+app.listen(PORT,()=>{
+  console.log(`Server successfully connected on port ${PORT}`)
+});
 
 /*
 Mobile App features
